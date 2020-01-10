@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Checkbox } from './Checkbox';
+import { AddTask } from './AddTask';
 import { useTasks } from '../hooks';
 import { collatedTasks } from '../constants';
 import { getTitle, getCollatedTitle, collatedTasksExists } from '../helpers';
@@ -14,12 +15,10 @@ export const Tasks = () => {
 
     if(projects && selectedProject && !collatedTasksExists(selectedProject)) {
         projectName = getTitle(projects, selectedProject).name;
-        console.log('Project name 1: ', projectName);
     }
     
     if(collatedTasksExists(selectedProject) && selectedProject) {
         projectName = getCollatedTitle(collatedTasks, selectedProject).name;
-        console.log('Project name 2: ', projectName);
     }
 
     useEffect(() => {
@@ -37,6 +36,7 @@ export const Tasks = () => {
                     </li>
                 ))}
             </ul>
+            <AddTask />
         </div>
     )
 }
