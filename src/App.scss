@@ -49,6 +49,11 @@
     border-radius: 3px;
   }
 
+  @mixin transparent-button() {
+    background-color: transparent;
+    border: 0;
+  } 
+
   @mixin va($va-align: center) {
     display: flex;
     align-items: center;
@@ -160,6 +165,7 @@
       grid-row-gap: 0px;
       max-width: 922px;
       margin: auto;
+      height: 100%;
     }
 
     p, li {
@@ -202,11 +208,23 @@
             &.settings__add {
               margin-right: 15px;
               font-size: 30px;
+              button {
+                @include transparent-button();
+                color: white;
+                cursor: pointer;
+              }
             }
-
-            &.settings__dark-mode svg {
-              width: 20px;
-              height: 20px;
+            
+            &.settings__darkmode {
+              button {
+                @include transparent-button();
+                color: white;
+                cursor: pointer;
+              }
+              svg {
+                width: 20px;
+                height: 20px;
+              }
             }
           }
         }
@@ -237,13 +255,19 @@
     padding-right: 15px;
 
     &:hover .sidebar__project-delete {
-      display: block;
+      display: flex;
     }
   }
 
   &__project {
     padding: 5px 0;
     cursor: pointer;
+    
+    &-container {
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
 
     &-delete {
       margin-left: auto;
@@ -305,10 +329,12 @@
       border-bottom: $generic-border;
       padding-left: 10px;
       cursor: pointer;
+      align-items: center;
 
       span {
         color: #0000008a;
         margin-right: 10px;
+        display: flex;
 
         svg.hidden-projects {
           transform: rotate(-90deg);
@@ -318,8 +344,10 @@
       h2 {
         margin: 0;
         color: #333;
-        font-size: bold;
+        font-size: 15px;
+        font-weight: bold;
         padding-bottom: 20px;
+        padding-left: 10px;
       }
     }
 
@@ -342,12 +370,19 @@
             color: #555;
           }
         }
+        &.active, &:hover {
+          font-weight: bold;
+          background-color: white;
+        }
+        div {
+          width: 100%;
+          @include no-select();
+          display: flex;
+          align-items: center;
+        }
       }
     }
-    &.active, &:hover {
-      font-weight: bold;
-      background-color: white;
-    }
+    
   }
 
 
@@ -365,6 +400,7 @@
       top: 10px;
       right: 0;
       background-color: white;
+      cursor: default;
 
       p {
         margin-top: 5px;
@@ -563,9 +599,15 @@
     background-color: #fff;
     width: 200px;
     right: 0;
-
+    
     &__list li {
       @include task-item();
+      padding: 0;
+
+      div {
+        width: 100%;
+        padding: 10px;
+      }
 
       span:first-of-type {
         margin-right: 10px;
@@ -586,6 +628,12 @@
 
     &__list li {
       @include task-item();
+      padding: 0;
+
+      div:nth-child(1) {
+        width: 100%;
+        padding: 10px;
+      }
     }
   }
 

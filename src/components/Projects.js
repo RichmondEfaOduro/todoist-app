@@ -15,7 +15,15 @@ export const Projects = ({ activeValue = null }) => {
             <li key={project.projectId} 
                 data-testid="project-action" 
                 role="button"
-                className={active === project.projectId ? 'active sidebar__project' : 'sidebar__project'}
+                className={ 
+                    active === project.projectId ? 'active sidebar__project' : 'sidebar__project' 
+                }
+            >
+            <div
+                role="button"
+                tabIndex={0}
+                aria-label="set active project button"
+                className="sidebar__project-container"
                 onClick={() => {
                     setActive(project.projectid)
                     setSelectedProject(project.projectId)
@@ -25,8 +33,9 @@ export const Projects = ({ activeValue = null }) => {
                     setSelectedProject(project.projectId)
                 }}
             >
-                {/* {'Project', JSON.stringify(project)} */}
                 <IndividualProject project={project} />
+            </div>
+                {/* {'Project', JSON.stringify(project)} */}
             </li>
         ))
     );

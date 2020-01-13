@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Checkbox } from './Checkbox';
 import { AddTask } from './AddTask';
 import { useTasks } from '../hooks';
@@ -13,12 +13,12 @@ export const Tasks = () => {
 
     let projectName = '';
 
-    if(projects && selectedProject && !collatedTasksExists(selectedProject)) {
-        projectName = getTitle(projects, selectedProject).name;
+    if(collatedTasksExists(selectedProject) && selectedProject) {
+        projectName = getCollatedTitle(collatedTasks, selectedProject).name;
     }
     
-    if(projects.length > 0 && selectedProject && !collatedTasksExists(selectedProject)) {
-        projectName = getCollatedTitle(collatedTasks, selectedProject).name;
+    if(projects && projects.length > 0 && selectedProject && !collatedTasksExists(selectedProject)) {
+        projectName = getTitle(projects, selectedProject).name;
     }
 
     useEffect(() => {
