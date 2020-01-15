@@ -10,7 +10,7 @@ export const TaskDate = ({
 
         <div className="task-date" data-testid="task-date-overlay">
             <ul className="task-date__list">
-                <li data-testid="task-date-overlay" >
+                <li >
                     <div
                         onClick={() => {
                             setShowTaskDate(false);
@@ -23,14 +23,15 @@ export const TaskDate = ({
                         tabIndex={0}
                         role="button"
                         aria-label="Show todays tasks"
-                        >
+                        data-testid="task-date-today"
+                    >
                         <span>
                             <FaSpaceShuttle />
                         </span>
                         <span>Today</span>
                     </div>
                 </li>
-                <li data-testid="task-date-tomorrow" >
+                <li  >
                     <div
                         onClick={() => {
                             setShowTaskDate(false);
@@ -43,6 +44,7 @@ export const TaskDate = ({
                         tabIndex={0}
                         role="button"
                         aria-label="Show Tomorrows tasks"
+                        data-testid="task-date-tomorrow"
                     >
                         <span>
                             <FaSpaceShuttle />
@@ -50,7 +52,7 @@ export const TaskDate = ({
                         <span>Tomorrow</span>
                     </div>
                 </li>
-                <li data-testid="task-date-next-week">
+                <li >
                     <div
                         onClick={() => {
                             setShowTaskDate(false);
@@ -60,6 +62,7 @@ export const TaskDate = ({
                             setShowTaskDate(false);
                             setTaskDate(moment().add(7, 'days').format('DD/MM/YYYY'))
                         }}
+                        data-testid="task-date-next-week"
                     >
                         <span>
                             <FaRegPaperPlane />

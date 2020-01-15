@@ -81,7 +81,7 @@ export const AddTask = ({
                     >
                         {showQuickAddTask && (
                             <>
-                                <div data-testid="quick-add-tast">
+                                <div data-testid="quick-add-task">
                                     <h2 className="header">Quick Add Task</h2>
                                     <span
                                         className="add-task__cancel-x"
@@ -158,7 +158,7 @@ export const AddTask = ({
                         )}
                         <span
                             className="add-task__project"
-                            data-test="show-project-overlay"
+                            data-testid="show-project-overlay"
                             onClick={() => setShowProjectOverlay(!showProjectOverlay)}
                             onKeyDown={() => setShowProjectOverlay(!showProjectOverlay)}
                             role="button"
